@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { UsersModule } from './users/users.module';
-import { DBModule } from './core/db/db.module';
 import { AuthModule } from './auth/auth.module';
 import { CommonModule } from './common/common.module';
 import { ConfigModule } from '@nestjs/config';
@@ -19,7 +18,6 @@ const ENV = process.env.NODE_ENV || 'development';
       load: [configuration],
     }),
     UsersModule,
-    DBModule,
     AuthModule
   ]
 })

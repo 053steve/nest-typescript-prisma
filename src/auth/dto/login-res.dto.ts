@@ -1,6 +1,4 @@
-import { UserDto } from "../../users/dto/user.dto";
 import { AuthenticateRes } from "../auth.interface";
-import { User } from "../../users/entities/user.entity";
 
 
 export class LoginResDto {

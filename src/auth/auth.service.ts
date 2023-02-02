@@ -70,7 +70,6 @@ export class AuthService {
 
   async login(data): Promise<LoginResDto> {
 
-    const foundUser = await this.usersService.findOne({email: data.user?.email})
 
     return new LoginResDto(data);
 

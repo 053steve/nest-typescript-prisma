@@ -51,6 +51,10 @@ export class UsersService {
     return this.prismaService.user.findUnique({ where: { email } });
   }
 
+  findByUserId(id: number) {
+    return this.prismaService.user.findUnique({ where: { id } });
+  }
+
   findUserBySub(sub: string) {
     return this.prismaService.user.findFirst({ where: { sub } });
   }

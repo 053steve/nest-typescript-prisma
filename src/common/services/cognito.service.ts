@@ -163,6 +163,7 @@ export class CognitoService {
     }
 
     const command = new AdminUpdateUserAttributesCommand(updateInput);
+    
     const result = await this.client.send(command);
     return;
   }

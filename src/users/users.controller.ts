@@ -45,25 +45,26 @@ export class UsersController {
 
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth('JWT-auth')
-  @Get(':email')
+  @Get(':id')
   @HttpCode(200)
-  findOne(@Param('email') email: string) {
-    return this.usersService.findByUserEmail(email);
+  findOne(@Param('id') id: number) {
+    return this.usersService.findByUserId(id);
   }
 
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth('JWT-auth')
-  @Patch(':email')
+  @Patch(':id')
   @HttpCode(200)
-  update(@Param('email') email: string, @Body() updateUserDto: Prisma.UserUpdateInput) {
-    return this.usersService.adminUpdate({where: {email: email}, data: updateUserDto});
+  update(@Param('id') id: number, @Body() updateUserDto: UpdateUserDto) {
+    return this.usersService.adminUpdate({where: {id: id}, data: updateUserDto});
   }
 
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth('JWT-auth')
-  @Delete(':email')
+  @Delete(':id')
   @HttpCode(200)
-  remove(@Param('email') email: string) {
-    return this.usersService.remove({email});
+  async remove(@Param('id') id: number) {
+    const user = await this.usersService.findByUserId(id);    
+    return this.usersService.remove({email: user.email});
   }
 }

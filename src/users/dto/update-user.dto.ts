@@ -25,10 +25,5 @@ export class UpdateUserDto {
   @IsOptional()
   user_type?: string;
 
-  userConfirmed?: boolean;
-
-
-
-
 
 }
